@@ -1,0 +1,24 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.idea/
+.vscode/
+.env
+.DS_Store
+Thumbs.db
+
+# Local AI assistant instructions and agent configuration.
+AGENTS*.md
+agents*.md
+CODEX*.md
+codex*.md
+.codex/
+.agents/
+
+# Track the original CSV files in data/raw.
+# Keep generated datasets local while preserving their directory structure.
+data/cleaned/*
+!data/cleaned/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
