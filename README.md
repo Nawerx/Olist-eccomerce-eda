@@ -6,26 +6,26 @@ I make along the way.
 
 I chose the [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 because I want to learn how to work with a real dataset spread across several
-CSV files. After reviewing the initial inspection results, I am now moving
-into exploratory data analysis.
+CSV files. I have now completed a second inspection focused on understanding
+what one row represents in each table and recording my observations.
 
 ## Where I am now
 
-I have completed my initial inspection and am now starting the analysis stage.
+I have completed my initial and secondary data inspections.
 
 I reviewed all nine source CSV files using `inspect_data.py`. I looked at their
 shape, sample rows, column names, inferred types, missing values, unique value
 counts, and exact duplicate counts.
 
-During this inspection, I did not identify defects that I considered to require
-cleaning. I therefore decided to skip a separate cleaning stage and begin
-analysis with the original data, rather than make changes without a reason.
+During the second inspection, I documented my current understanding of each
+table's grain (what one row represents) in [Data Model Notes](docs/data_model.md).
+These notes cover all nine source tables and record observations that I will
+revisit as I investigate the data further.
 
-This records the outcome of my initial review, not a guarantee that every
-possible issue has been ruled out. If a specific problem appears during
-analysis, I will investigate it and document any necessary change then.
+I found **261,831 exact duplicate rows** in the geolocation table. I have not
+yet decided whether to remove them; that decision depends on how I use the
+table. No cleaning transformations have been implemented.
 
-I have not yet implemented the analysis or reached business conclusions.
 
 ## How I am organizing the work
 
@@ -42,6 +42,8 @@ Olist-E-commerce-eda/
 |   |-- raw/
 |   |-- cleaned/
 |   `-- processed/
+|-- docs/
+|   `-- data_model.md
 `-- src/
     |-- config.py
     |-- inspect_data.py
@@ -52,6 +54,9 @@ Olist-E-commerce-eda/
 pandas and prints descriptive information. `data_cleaning.py` currently contains
 only a note and is not part of my current workflow; it does not load, change,
 or export data.
+
+`docs/data_model.md` holds my table-grain notes and inspection findings,
+which I moved out of `inspect_data.py`.
 
 The `cleaned/` and `processed/` folders contain no datasets. I will use them
 only if my work creates a need for them. I have not decided what their contents
@@ -89,12 +94,11 @@ prints observations without writing output files or applying transformations.
 It uses pandas' inferred types. I will check whether they are appropriate
 whenever an analysis requires a particular interpretation or calculation.
 
-## How I am moving into analysis
+## What comes next
 
-I will develop the analysis step by step, letting questions emerge from the
-data. I have not fixed a list of topics, metrics, or output tables in advance.
-When I need to combine tables or calculate a measure, I will investigate the
-relevant columns and relationships before making that decision.
+My next focus is to investigate candidate keys and relationships between
+tables, checking uniqueness and cardinality before choosing joins. I will
+revisit the geolocation duplicates when I understand how I need that table.
 
 ## My progress record
 
